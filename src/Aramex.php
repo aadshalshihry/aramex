@@ -17,11 +17,11 @@ class Aramex
         // Define an instance from the core class.
         $aramex = new Core;
         // Import SoapCLient object from Aramex's endpoint.
-        
+
         $soapClient = AramexHelper::getSoapClient(AramexHelper::SHIPPING);
 
 
-        // Preparation for initializing pickup request (Extract the data). 
+        // Preparation for initializing pickup request (Extract the data).
         $pickupAddress = AramexHelper::extractPickupAddressContact($param);     // unchangeable
         $pickupDetails = AramexHelper::extractPickupDetails($param);            // changeable
 
@@ -30,14 +30,14 @@ class Aramex
 
         // call the SoapClient API.
         $call = $soapClient->CreatePickup($aramex->getParam());
-        
+
         $ret = new \stdClass;
         // check the response.
         if ($call->HasErrors){
 
             // prepare return object with errors described in call response.
             $ret->error = 1;
-            // No one knows what is the structure of the response 
+            // No one knows what is the structure of the response
             if (is_array($call->Notifications)){
                 $ret->errors = $call->Notifications['Notification'];
             }
@@ -46,7 +46,7 @@ class Aramex
             }
         }
         else {
-            
+
             // extract helpful data from call response.
             $pickupGUID = $call->ProcessedPickup->GUID;
             $pickupId = $call->ProcessedPickup->ID;
@@ -57,18 +57,18 @@ class Aramex
             $ret->error = 0;
             $ret->pickupGUID = $pickupGUID;
             $ret->pickupID   = $pickupId;
-            
+
         }
         // return the prepared object.
-        return $ret;    
+        return $ret;
     }
 
     public static function cancelPickup($pickupGuid , $commnet)
     {
         // Define an instance from the core class.
         $aramex = new Core;
-        
-        // Import SoapCLient object from Aramex's endpoint. 
+
+        // Import SoapCLient object from Aramex's endpoint.
         $soapClient = AramexHelper::getSoapClient(AramexHelper::SHIPPING);
         $aramex->initializePickupCancelation($pickupGuid , $commnet);
         $call = $soapClient->CancelPickup($aramex->getParam());
@@ -77,7 +77,7 @@ class Aramex
 
         if ($call->HasErrors){
             $ret->error  = 1;
-            $ret->errors = $call->Notifications['Notification'];
+            $ret->errors = $call->Notifications->Notification->Message;
         }
         else {
             $ret = $call;
@@ -88,14 +88,14 @@ class Aramex
 
     /**
     *
-    * @param array of shipment parameters 
+    * @param array of shipment parameters
     * @return object described in https://
     **/
     public static function createShipment($param =[])
     {
         // Define an instance from the core class.
         $aramex = new Core;
-        // Import SoapCLient object from Aramex's endpoint. 
+        // Import SoapCLient object from Aramex's endpoint.
 
         $soapClient       = AramexHelper::getSoapClient(AramexHelper::SHIPPING);
 
@@ -103,7 +103,7 @@ class Aramex
         $consigneeAddress = AramexHelper::extractConsigneeAddressContact($param);
 
         $shipmentDetails  = AramexHelper::extractShipmentDetails($param);
-      
+
         $aramex->initializeShipment($shipperAddress, $consigneeAddress, $shipmentDetails);
 
         $call =  $soapClient->CreateShipments($aramex->getParam());
@@ -132,7 +132,7 @@ class Aramex
     public static function calculateRate($origin , $destination , $shipmentDetails , $currency){
         $aramex = new Core;
         $soapClient         = AramexHelper::getSoapClient(AramexHelper::RATE);
-        
+
         $destinationAddress = AramexHelper::extractAddress($destination);
         $originAddress      = AramexHelper::extractAddress($origin);
 
@@ -169,7 +169,7 @@ class Aramex
         $aramex->initializeShipmentTracking($param);
 
         $call = $soapClient->TrackShipments($aramex->getParam());
-        
+
         $ret = new \stdClass;
 
         if ($call->HasErrors) {
@@ -189,13 +189,13 @@ class Aramex
         $aramex->initializeFetchCountries($code);
         if (isset($code))
             $call = $soapClient->FetchCountry($aramex->getParam());
-        else 
+        else
             $call = $soapClient->FetchCountries($aramex->getParam());
 
         $ret = new \stdClass;
         if ($call->HasErrors) {
             $ret->error = 1;
-            $ret->errors = $call->Notification;                
+            $ret->errors = $call->Notification;
         }else{
             $ret = $call;
         }
@@ -207,7 +207,7 @@ class Aramex
         $aramex = new Core;
         $aramex->initializeFetchCities($code, $nameStartWith);
         $call = $soapClient->FetchCities($aramex->getParam());
-        
+
         $ret = new \stdClass;
         if ($call->HasErrors) {
             $ret->error = 1;
@@ -216,7 +216,7 @@ class Aramex
             $ret = $call;
         }
         return $ret;
-    } 
+    }
 
     public static function validateAddress($address){
         $address = AramexHelper::extractAddress($address);
@@ -239,5 +239,5 @@ class Aramex
         }
 
         return $ret;
-    } 
-}   
+    }
+}
