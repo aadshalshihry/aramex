@@ -1,4 +1,4 @@
-# Aramex ME
+# Aramex
 ## Installation
 
 You can install the package via [Composer](https://getcomposer.org).
