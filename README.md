@@ -4,12 +4,12 @@
 You can install the package via [Composer](https://getcomposer.org).
 
 ```bash
-composer require maree/aramex
+composer require aadshalshihry/aramex
 ```
 Publish your aramex.php config file with
 
 ```bash
-php artisan vendor:publish --provider="maree\aramex\AramexServiceProvider" --tag="aramex"
+php artisan vendor:publish --provider="Aadshalshihry\Aramex\AramexServiceProvider" --tag="aramex"
 ```
 then change your aramex config from config/aramex.php file
 ```php
@@ -17,7 +17,7 @@ then change your aramex config from config/aramex.php file
     'ENV'  => 'TEST', //TEST|LIVE
 	'TEST' => [
 		'AccountNumber'		 	=> '11111',
-		'UserName'			 	=> 'maree@aramex.com',
+		'UserName'			 	=> 'username@aramex.com',
 		'Password'			 	=> '123456',
 		'AccountPin'		 	=> '122334',
 		'AccountEntity'		 	=> 'EGY',
@@ -30,9 +30,9 @@ then change your aramex config from config/aramex.php file
 
 ## Create Pickup 
 ```php
-use maree\aramex\Aramex;
+use Aadshalshihry\Aramex\Aramex;
     $data = Aramex::createPickup([
-            'name' => 'maree',
+            'name' => 'name',
             'cell_phone' => '+123123123',
             'phone' => '+123123123',
             'email' => 'myEmail@gmail.com',
@@ -59,18 +59,18 @@ use maree\aramex\Aramex;
 
 ## cancel Pickup 
 ```php
-use maree\aramex\Aramex;
+use Aadshalshihry\Aramex\Aramex;
     //get $guid from createPickup function
     $response = Aramex::cancelPickup($guid,$cancel_reason = '');
 ```
 
 ## Create Shipment 
 ```php
-use maree\aramex\Aramex;
+use Aadshalshihry\Aramex\Aramex;
 
         $callResponse = Aramex::createShipment([
             'shipper' => [
-                'name' => 'maree',
+                'name' => 'name',
                 'email' => 'myEmail@gmail.com',
                 'phone'      => '+123123123',
                 'cell_phone' => '+123123123',
@@ -161,7 +161,7 @@ use maree\aramex\Aramex;
         
 ## calculate rate 
 ```php
-use maree\aramex\Aramex;
+use Aadshalshihry\Aramex\Aramex;
         $originAddress = [
             'line1' => 'Test string',
             'city' => 'Amman',
@@ -202,7 +202,7 @@ use maree\aramex\Aramex;
 
 ## Track Shipments 
 ```php
-use maree\aramex\Aramex;
+use Aadshalshihry\Aramex\Aramex;
         //find createShipmentResults , anotherCreateShipmentResults from 'createShipment' function
         $shipments = [ 
             $createShipmentResults->Shipments->ProcessedShipment->ID,
@@ -220,7 +220,7 @@ use maree\aramex\Aramex;
 
 ## fetch Countries 
 ```php
-use maree\aramex\Aramex; 
+use Aadshalshihry\Aramex\Aramex; 
         $data = Aramex::fetchCountries('EG'); 
         //Or 
         $data = Aramex::fetchCountries();
@@ -228,13 +228,13 @@ use maree\aramex\Aramex;
 
 ## fetch Cities 
 ```php
-use maree\aramex\Aramex; 
+use Aadshalshihry\Aramex\Aramex; 
     $data = Aramex::fetchCities('EG'); 
 ```
 
 ## validate address
 ```php
-use maree\aramex\Aramex; 
+use Aadshalshihry\Aramex\Aramex; 
   $data = Aramex::validateAddress([
                 'country_code' => 'EG',
                 'city' => 'Cairo',
