@@ -1,9 +1,9 @@
 <?php
 
-namespace maree\aramex;
+namespace Aadshalshihry\Aramex;
 
-use maree\aramex\Core;
-use maree\aramex\Helpers\AramexHelper;
+use Aadshalshihry\Aramex\Core;
+use Aadshalshihry\Aramex\Helpers\AramexHelper;
 class Aramex
 {
 

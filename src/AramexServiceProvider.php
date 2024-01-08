@@ -1,6 +1,6 @@
 <?php
 
-namespace maree\aramex;
+namespace Aadshalshihry\Aramex;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace maree\aramex;
+namespace Aadshalshihry\Aramex;
 
 
 /**
@@ -115,31 +115,31 @@ class Core
 
                 ],
                 'ThirdParty' => array(
-                    'Reference1'     => 'Re 1',
-                    'Reference2'     => 'Re 1',
-                    'AccountNumber' => '71587708',
-                    'PartyAddress'    => array(
-                        'Line1'                    => 'king fahad',
-                        'Line2'                    => '',
-                        'Line3'                    => '',
-                        'City'                    => 'RUH',
-                        'StateOrProvinceCode'    => '',
-                        'PostCode'                => '',
-                        'CountryCode'            => 'SA'
+                    'Reference1'        => config('aramex.ThirdParty.Reference1'),
+                    'Reference2'        => config('aramex.ThirdParty.Reference2'),
+                    'AccountNumber'     => config('aramex.ThirdParty.AccountNumber'),
+                    'PartyAddress'      => array(
+                        'Line1'                     => config('aramex.ThirdParty.PartyAddress.Line1'),
+                        'Line2'                     => config('aramex.ThirdParty.PartyAddress.Line2'),
+                        'Line3'                     => config('aramex.ThirdParty.PartyAddress.Line3'),
+                        'City'                      => config('aramex.ThirdParty.PartyAddress.City'),
+                        'StateOrProvinceCode'       => config('aramex.ThirdParty.PartyAddress.StateOrProvinceCode'),
+                        'PostCode'                  => config('aramex.ThirdParty.PartyAddress.PostCode'),
+                        'CountryCode'               => config('aramex.ThirdParty.PartyAddress.CountryCode')
                     ),
-                    'Contact'        => array(
-                        'Department'            => 'Accounting',
-                        'PersonName'            => 'شركة ريادة الاولى المحدودة, Atelier',
-                        'Title'                    => '',
-                        'CompanyName'            => 'Atelier',
-                        'PhoneNumber1'            => '966552915937',
-                        'PhoneNumber1Ext'        => '',
-                        'PhoneNumber2'            => '',
-                        'PhoneNumber2Ext'        => '',
-                        'FaxNumber'                => '',
-                        'CellPhone'                => '966552915937',
-                        'EmailAddress'            => '',
-                        'Type'                    => 'riyadahcompanyl.l.c@gmail.com'
+                    'Contact'           => array(
+                        'Department'                => config('aramex.ThirdParty.Contact.Department'),
+                        'PersonName'                => config('aramex.ThirdParty.Contact.PersonName'),
+                        'Title'                     => config('aramex.ThirdParty.Contact.Title'),
+                        'CompanyName'               => config('aramex.ThirdParty.Contact.CompanyName'),
+                        'PhoneNumber1'              => config('aramex.ThirdParty.Contact.PhoneNumber1'),
+                        'PhoneNumber1Ext'           => config('aramex.ThirdParty.Contact.PhoneNumber1Ext'),
+                        'PhoneNumber2'              => config('aramex.ThirdParty.Contact.PhoneNumber2'),
+                        'PhoneNumber2Ext'           => config('aramex.ThirdParty.Contact.PhoneNumber2Ext'),
+                        'FaxNumber'                 => config('aramex.ThirdParty.Contact.FaxNumber'),
+                        'CellPhone'                 => config('aramex.ThirdParty.Contact.CellPhone'),
+                        'EmailAddress'              => config('aramex.ThirdParty.Contact.EmailAddress'),
+                        'Type'                      => config('aramex.ThirdParty.Contact.Type'),
                     ),
                 ),
                 'ShippingDateTime'  => $details->ShippingDateTime, // Should be Filled

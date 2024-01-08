@@ -10,14 +10,14 @@ return [
 	 * Aramex Environment
 	 *		For Development => 'TEST'
 	 *  	For Staging => 'LIVE'
-	 */	
+	 */
 	'ENV' => 'TEST',
 
 	/** Client Information
 	 *	Test Credentials
-	 * 	I recommend to take your own test account from aramex support or something, because those accounts 
+	 * 	I recommend to take your own test account from aramex support or something, because those accounts
 	 *  are not stable, Sometimes the request returns an error not defined in there documentation so it will
-	 *  take a lot of time tracing the error to find that the error is from the account itself.   
+	 *  take a lot of time tracing the error to find that the error is from the account itself.
 	 */
 	// 'TEST' => [
 	// 	'AccountNumber'		 	=> '102331',
@@ -61,7 +61,7 @@ return [
 		'Version'			 	=> ''
 	],
 
-	'CompanyName' => 'maree company',
+	'CompanyName' => 'company Name',
 
 	/**Business Attributes
 	 *  Usually there are attributes that never change in the projects (specially
@@ -71,7 +71,7 @@ return [
 	 */
 
 
- 	/** 
+ 	/**
  	 * Product Group
  	 * 	Avaiable Values:
  	 *  	EXP = Express
@@ -83,19 +83,19 @@ return [
 	/**
 	 * Product Type
 	 * Available Values:
-	 * 		OND = only for Product Group DOM 
+	 * 		OND = only for Product Group DOM
 	 *		PDX = Priority Document Express
 	 *		PPX = Priority Parcel Express
-	 *		PLX = Priority Letter Express 
+	 *		PLX = Priority Letter Express
 	 *		DDX = Deferred Document Express
 	 *		DPX = Deferred Parcel Express
 	 *		GDX = Ground Document Express
 	 *		GPX = Ground Parcel Express
 	 *		GPX = Ground Parcel Express
 	 *		EPX = Economy Parcel Express
-	 *	For more information naviagte to Appendix-A (Page: 51) in 
+	 *	For more information naviagte to Appendix-A (Page: 51) in
 	 *  https://www.aramex.com/docs/default-source/resourses/resourcesdata/shipping-services-api-manual.pdf
-	 */ 
+	 */
 	'ProductType' => 'PPX',
 
 
@@ -105,26 +105,26 @@ return [
 	 * 		P = Prepaid
 	 *		C = Collect
 	 *		3 = Third Party
-	 * 	For more information naviagte to Appendix-B (Page: 52) in 
+	 * 	For more information naviagte to Appendix-B (Page: 52) in
 	 *  https://www.aramex.com/docs/default-source/resourses/resourcesdata/shipping-services-api-manual.pdf
 	 */
-	'Payment' => 'P',	
-	
+	'Payment' => 'P',
 
-	/**  
-	 * Payment Options 
+
+	/**
+	 * Payment Options
 	 * Available Values:
-	 * 		For PaymentType = C 
-	 *			ASCC = Needs Shipper Account Number to be filled. 
+	 * 		For PaymentType = C
+	 *			ASCC = Needs Shipper Account Number to be filled.
 	 *			ARCC = Needs Consignee Account Number to be filled.
 	 *		For PaymentType = P (it's nullable here)
-	 *			CASH 
+	 *			CASH
 	 *			ACCT (Stands for Account)
 	 *			PPST (Stands for Prepaid Stock)
 	 *			CRDT (Stands for Credit)
 	 *
 	 *  Please note that no one on earth know any details about the above
-	 *  Even though for more information navigate to 4.7 Shipment Details (Page: 42) in 
+	 *  Even though for more information navigate to 4.7 Shipment Details (Page: 42) in
 	 *  https://www.aramex.com/docs/default-source/resourses/resourcesdata/shipping-services-api-manual.pdf
 	 */
 
@@ -134,14 +134,14 @@ return [
 	 *	Service Code (Additional Services for the shipment)
 	 *  Separate by comma when selecting multiple services
 	 *  Available Values: (nullable)
-	 * 		CODS = Cash on Delivery 
-	 * 		FIRST = First Delivery 
-	 * 		FRDM = Free Domicile  
-	 * 		HFPU = Hold for pick up 
-	 * 		NOON = Noon Delivery 
-	 * 		SIG = Signature Required 
+	 * 		CODS = Cash on Delivery
+	 * 		FIRST = First Delivery
+	 * 		FRDM = Free Domicile
+	 * 		HFPU = Hold for pick up
+	 * 		NOON = Noon Delivery
+	 * 		SIG = Signature Required
 	 *  For more information navigate to Appendix-C (Page: 52) in
-	 *  https://www.aramex.com/docs/default-source/resourses/resourcesdata/shipping-services-api-manual.pdf 
+	 *  https://www.aramex.com/docs/default-source/resourses/resourcesdata/shipping-services-api-manual.pdf
 	 */
 	'Services' => null,
 
@@ -155,14 +155,43 @@ return [
 
 
 	/**
-	 *	 Label Information 
+	 *	 Label Information
 	 *	 Available Values:
-	 *      ReportID   => 9201, 9729 (9729 use it when COD to extract readable reports, 9201 with COD will not be accepted) 
+	 *      ReportID   => 9201, 9729 (9729 use it when COD to extract readable reports, 9201 with COD will not be accepted)
 	 *		ReportType => “URL” to get report hosted on URL as PDF
 	 *					  “RPT” to get a streamed file
 	 */
 	'LabelInfo' => [
 		'ReportID' 		=> 9201,
 		'ReportType'	=> 'URL',
-	]
+	],
+
+    'ThirdParty' => array(
+        'Reference1'     => 'Re 1',
+        'Reference2'     => 'Re 1',
+        'AccountNumber' => '00000000',
+        'PartyAddress'    => array(
+            'Line1'                    => 'line 1',
+            'Line2'                    => '',
+            'Line3'                    => '',
+            'City'                    => 'JO',
+            'StateOrProvinceCode'    => '',
+            'PostCode'                => '',
+            'CountryCode'            => 'SA'
+        ),
+        'Contact'        => array(
+            'Department'            => '',
+            'PersonName'            => '',
+            'Title'                    => '',
+            'CompanyName'            => '',
+            'PhoneNumber1'            => '',
+            'PhoneNumber1Ext'        => '',
+            'PhoneNumber2'            => '',
+            'PhoneNumber2Ext'        => '',
+            'FaxNumber'                => '',
+            'CellPhone'                => '',
+            'EmailAddress'            => '',
+            'Type'                    => 'test@gmail.com'
+        ),
+    ),
 ];

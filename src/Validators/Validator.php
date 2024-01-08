@@ -1,6 +1,6 @@
 <?php
 
-namespace maree\aramex\Validators;
+namespace Aadshalshihry\Aramex\Validators;
 
 use Validator as StandardValidator;
 use Illuminate\Validation\Rule;

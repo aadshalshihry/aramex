@@ -1,8 +1,8 @@
 <?php 
 
-namespace maree\aramex\Helpers;
+namespace Aadshalshihry\Aramex\Helpers;
 
-use maree\aramex\Validators\Validator;
+use Aadshalshihry\Aramex\Validators\Validator;
 use SoapClient;
 
 /**
